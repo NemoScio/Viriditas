@@ -1,0 +1,400 @@
+body {
+  background-color: #1e9b8a;
+  font-family: Garamond, serif;
+  font-size: 24px;
+  line-height: 24px;
+  color: #c2df23;
+  overscroll-behavior: none;
+  margin: 0;
+}
+
+button {
+  cursor: pointer;
+}
+
+canvas {
+  display: block;
+}
+
+#info {
+  position: absolute;
+  top: 0px;
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  text-align: center;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  pointer-events: none;
+  z-index: 1; /* TODO Solve this in HTML */
+}
+
+#notSupported {
+  width: 50%;
+  margin: auto;
+  background-color: #f00;
+  margin-top: 20px;
+  padding: 10px;
+}
+
+button,
+input,
+select {
+  pointer-events: auto;
+}
+
+.dg.ac {
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  z-index: 2 !important; /* TODO Solve this in HTML */
+}
+
+/*----- Logo -----*/
+img.logo {
+  width: 248px;
+  height: 369px;
+  position: absolute;
+  object-fit: cover;
+  float: none;
+  top: 15%;
+  left: 50%;
+}
+
+/*----- Initial overlay -----*/
+#overlay {
+  position: absolute;
+  z-index: 4;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #482173;
+}
+
+/*----- Animated initial button -----*/
+.wave-btn {
+  border-radius: 2em;
+  background: #482173;
+  color: #c2df23;
+  box-shadow: 20px 20px 60px #440154, -20px -20px 60px #433e85;
+  border: none;
+  font-family: "Copperplate", fantasy;
+  font-size: 36px;
+  padding: 0.7em 1.5em;
+  position: absolute;
+  top: 82.5%;
+  cursor: pointer;
+}
+.wave-btn::before,
+.wave-btn::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  transform: translate(-50%, -50%);
+  border-radius: inherit;
+  box-shadow: 2px 2px 6px #440154, -2px -2px 6px #433e85,
+    inset 2px 2px 6px #440154, inset -2px -2px 6px #433e85;
+  animation: wave 1.6s linear infinite;
+  opacity: 0;
+  transition: 0.3s;
+}
+.wave-btn::after {
+  animation-delay: 0.8s;
+}
+.wave-btn:hover:before,
+.wave-btn:hover:after {
+  animation: none;
+  box-shadow: none;
+}
+@keyframes wave {
+  0% {
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+  }
+  50% {
+    width: 120%;
+    height: 140%;
+    opacity: 1;
+  }
+  100% {
+    width: 140%;
+    height: 160%;
+    opacity: 0;
+  }
+}
+
+/*----- Seed button -----*/
+.btn {
+  position: absolute;
+  top: 20%;
+  left: 15%;
+  width: 7em;
+  height: 7em;
+  border-radius: 50%;
+  outline: none;
+  border: 4px #440154 solid;
+  background: linear-gradient(145deg, #2ab07f, #25858e);
+  box-shadow: inset 2px 2px 0px #c2df23, inset -2px -2px 0px #38588c;
+  color: #a0da39;
+}
+.btn span {
+  font-size: 2.9em;
+}
+.btn::before:: {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: inherit;
+  background: linear-gradient(145deg, #1e9b8a, #2d708e);
+  width: 7.25em;
+  height: 7.25em;
+  z-index: -1;
+  box-shadow: 11px 11px 22px #2ab07f, -11px -11px 22px #25858e;
+}
+.button-clicked {
+  background: linear-gradient(-185deg, #1e9b8a, #2d708e);
+  box-shadow: inset -2px -2px 0px #c2df23, inset 2px 2px 0px #38588c;
+}
+.icon-clicked {
+  color: #fde725;
+  text-shadow: 0px 0px 15px #28ae80;
+}
+
+/*----- Range sliders -----*/
+.range-slider {
+  max-width: 30em;
+  margin: 8em auto;
+  position: absolute;
+  top: 40%;
+  left: 30%;
+  display: flex;
+  user-select: none;
+}
+.range-slider .slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 0.4em;
+  outline: none;
+  border-radius: 3px;
+  background: #482173;
+  box-shadow: 3px 3px 6px #440154, inset 1px 1px 1px #433e85;
+}
+.range-slider .slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 1.7em;
+  height: 1.7em;
+  cursor: pointer;
+  z-index: 3;
+  position: relative;
+}
+.range-slider .slider-thumb {
+  position: absolute;
+  width: 1.7em;
+  height: 1.7em;
+  background: #440154;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  box-shadow: inset 0px 1px 2px #1e9b8a;
+}
+.range-slider .slider-thumb::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 0.7em;
+  height: 0.7em;
+  background: #2d708e;
+  border-radius: inherit;
+  transition: 0.3s;
+}
+.range-slider:hover .slider-thumb:before {
+  background: #c2df23;
+}
+.range-slider .tooltip {
+  position: absolute;
+  width: 2.8em;
+  height: 2em;
+  top: -2em;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #482173;
+  font-family: Helvetica, sans-serif;
+  text-align: center;
+  font-weight: bold;
+  line-height: 35px;
+  color: #fde725;
+  border-radius: 3px;
+  box-shadow: 0px 3px 10px #440154, inset 0px 1px 2px #433e85;
+}
+.range-slider .tooltip::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 10px solid #482173;
+  bottom: -0.5em;
+  left: 50%;
+  transform: translate(-50%);
+}
+@media screen and (max-width: 700px) {
+  .ranger-slider {
+    width: 100%;
+  }
+}
+
+/*----- Play/Stop Switch -----*/
+.checkbox {
+  background: linear-gradient(120deg, #277f8e, #1fa187);
+  width: 6.5em;
+  height: 3em;
+  border-radius: 2em;
+  box-shadow: inset 0 0.05em 0 #365c8d, inset 0 -0.05em 0 #28ae80;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 30%;
+  top: 40%;
+  font-sixe: 36px;
+}
+.checkbox input {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  z-index: 2;
+  cursor: pointer;
+}
+.checkbox .slider {
+  background: linear-gradient(0deg, #46327e 0%, #3b528b 50%, #46327e 100%);
+  width: 5.6em;
+  height: 2.2em;
+  border: 0.05em #21918c solid;
+  border-radius: 2em;
+  box-shadow: inset 0 0 0.5em #440154, inset 0 0 0.1em #000;
+  position: relative;
+  overflow: hidden;
+}
+.checkbox .slide {
+  box-sizing: border-box;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0;
+  height: 1.8em;
+  width: 160%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 2em;
+  padding: 0 1em;
+  transition: 0.8s;
+}
+.checkbox .knob {
+  background: linear-gradient(0deg, #2ab07f, #25858e);
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 1.8em;
+  height: 1.8em;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  box-shadow: inset 0 0.1em 0 #c2df23, inset 0 -0.1em 0 #38588c;
+}
+.checkbox span {
+  font-family: Helvetica, sans-serif;
+  font-weight: bold;
+  color: #440154;
+  text-shadow: #28ae80 0.01em 0.01em 0;
+  transition: 0.3s;
+  transition-delay: 300ms;
+}
+.checkbox input:checked + .slider .slide {
+  left: -3.35em;
+}
+.checkbox input:checked + .slider .on {
+  color: #fde725;
+  text-shadow: #000 0 -0.04em 0, #fde725 0 0 1.5em;
+}
+/*----- Sow & Show -----*/
+.btnB {
+  position: absolute;
+  top: 75%;
+  left: 15%;
+  width: 7em;
+  height: 7em;
+  border-radius: 50%;
+  outline: none;
+  border: 4px #440154 solid;
+  background: linear-gradient(145deg, #2ab07f, #25858e);
+  box-shadow: inset 2px 2px 0px #c2df23, inset -2px -2px 0px #38588c;
+  color: #a0da39;
+}
+.btnB span {
+  font-size: 2.9em;
+}
+.btnb::before:: {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: inherit;
+  background: linear-gradient(145deg, #1e9b8a, #2d708e);
+  width: 7.25em;
+  height: 7.25em;
+  z-index: -1;
+  box-shadow: 11px 11px 22px #2ab07f, -11px -11px 22px #25858e;
+}
+.button-clicked {
+  background: linear-gradient(-185deg, #1e9b8a, #2d708e);
+  box-shadow: inset -2px -2px 0px #c2df23, inset 2px 2px 0px #38588c;
+}
+.icon-clicked {
+  color: #fde725;
+  text-shadow: 0px 0px 15px #28ae80;
+}
+#sowInput {
+  position: absolute;
+  top: 75%;
+  left: 35%;
+  width: 420px;
+  font-family: Helvetica, sans-serif;
+  font-weight: bold;
+  line-height: 35px;
+  color: #c2df23;
+  background: linear-gradient(0deg, #46327e 0%, #3b528b 50%, #46327e 100%);
+  border: 0.05em #21918c solid;
+  border-radius: 2em;
+  box-shadow: inset 0 0 0.5em #440154, inset 0 0 0.1em #000;
+  overflow: hidden;
+}
+#show {
+  position: absolute;
+  top: 82%;
+  left: 35%;
+  width: 420px;
+  font-family: Helvetica, sans-serif;
+  font-weight: bold;
+  color: #440154;
+}

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Viriditas</title>
+    <meta name="keywords" content="Synthesizer, Sequencer, Web-Instrument" />
+    <meta
+      name="description"
+      content="A prototype for an organismic generative sequencer based on DNA transcription"
+    />
+    <meta charset="UTF-8" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=potted_plant"
+    />
+  </head>
+
+  <body>
+    <!-- Initial Overlay -->
+    <div id="overlay">
+      <h1 style="position: absolute; top: 5%">V i r i d i t a s</h1>
+      <button class="wave-btn" id="startButton">Play</button>
+      <img
+        src="Images/Viriditas_Purple_Trans.png"
+        alt="Viriditas logo overlay"
+        style="float: none; width: 372px; height: 554px"
+      />
+    </div>
+    <!-- Background Image -->
+    <img
+      class="logo"
+      src="Images/Viriditas_Green_Trans.png"
+      alt="Viriditas logo background"
+    />
+    <!-- Range Sliders -->
+    <div class="range-slider">
+      <input type="range" min="1" max="100" value="50" class="slider" />
+      <div class="slider-thumb">
+        <div class="tooltip"></div>
+      </div>
+    </div>
+    <!-- Play/Stop Switch -->
+    <div class="checkbox">
+      <input type="checkbox" id="checkPlay" checked />
+      <div class="slider">
+        <div class="slide">
+          <span>Stop</span>
+          <div class="knob"></div>
+          <span class="on">Play</span>
+        </div>
+      </div>
+    </div>
+    <!-- Seed Button -->
+    <button class="btn" id="seedButton">
+      <span class="material-icons-outlined"> egg </span>
+    </button>
+    <!-- Sow and Show -->
+    <input
+      type="text"
+      id="sowInput"
+      placeholder="Plant a seed"
+      maxlength="42"
+    />
+    <button class="btnB" id="sowButton">
+      <span class="material-symbols-outlined"> potted_plant </span>
+    </button>
+    <p class="output" id="show"></p>
+    <!--  -->
+    <div id="display"></div>
+    <script src="src/index.js"></script>
+  </body>
+</html>
