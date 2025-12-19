@@ -1,2 +1,2 @@
 # Viriditas
-Created with CodeSandbox
+A prototype for an organismic generative sequencer based on DNA transcription.
